@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>HighCharts and Tablesorter</title>
+        <!--Jquery Library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--Tablesorter-->
+        <script type="text/javascript" src="tablesorter/jquery.tablesorter.js"></script> 
+        <link rel="stylesheet" href="blue/style.css">
+        <!--HighCharts-->
+        <script src="https://code.highcharts.com/highcharts.src.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() { 
+                // HighCharts Call
+                $(function () { 
+                    Highcharts.setOptions({
+                        colors: ['#49db3f', '#f44242', '#6842f4', '#f49e42', '#f442a7', '#f4e842', '#FFF263', '#6AF9C4']
+                    });
+                    var myChart = Highcharts.chart('container', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie'
+                        },
+                        title: {
+                            text: 'Pie Eaten'
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Brands',
+                            colorByPoint: true,
+                            data: [{
+                                name: 'Apple',
+                                y: 50.00
+                            }, {
+                                name: 'Cherry',
+                                y: 20.00,
+                                sliced: true,
+                                selected: true
+                            }, {
+                                name: 'Berry',
+                                y: 11.41
+                            }, {
+                                name: 'Pumpkin',
+                                y: 9.77
+                            }, {
+                                name: 'Rhubarb',
+                                y: 0.91
+                            }, {
+                                name: 'Other',
+                                y: 3.6
+                            }]
+                        }]
+                    });
+                });
+
+
+                // Tablesorter Call
+                // $(document).on('click', $('#mytable').tablesorter());
+                $("table").tablesorter({ 
+                    // sort on the first column and third column, order asc 
+                    sortList: [[0,0],[2,0]] 
+                }); 
+            }); 
+        </script>
+        <style>
+            #myTable{
+                border: 1px solid black;
+            }
+            th{
+                background-color: lightblue;
+                border: 1px solid silver;
+            }
+            td{
+                border: 1px solid silver;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="container" style="width:100%; height:400px;"></div>
+
+        <table id="myTable" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Month</th>
+                    <th>Temperature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Jan</td>
+                    <td>32</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Feb</td>
+                    <td>37</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>March</td>
+                    <td>48</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>April</td>
+                    <td>55</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>May</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>June</td>
+                    <td>70</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>July</td>
+                    <td>72</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>August</td>
+                    <td>75</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>September</td>
+                    <td>59</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>October</td>
+                    <td>55</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>November</td>
+                    <td>42</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>December</td>
+                    <td>30</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
